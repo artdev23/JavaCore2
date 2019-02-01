@@ -5,7 +5,7 @@ import static java.lang.System.*;
 import static java.util.Arrays.*;
 
 
-public class App
+public class UniqueWords
 {
 
   private static String[] words = {
@@ -34,15 +34,20 @@ public class App
   }
 
 
+  private static void print(Map<String, Long> words)
+  {
+	for (String word : words.keySet())
+	{
+	  long count = words.get(word);
+	  out.println(MessageFormat.format(
+	  				"Слово: {0} \t\t Кол-во вхождений: {1}", word, count));
+	}
+  }
+
+
   public static void main(String... args)
   {
-	Map<String,Long> unique = findUnique(words);
-
-	for (String word : unique.keySet())
-	{
-	  long count = unique.get(word);
-	  out.println(MessageFormat.format("{0}\t{1}", word, count));
-	}
+	print(findUnique(words));
   }
 
 }
